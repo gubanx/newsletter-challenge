@@ -23,5 +23,18 @@ services:
       interval: 5m
       timeout: 10s
       retries: 3
-
+  email:
+    container_name: email
+    build: .
+    image: newsletter/email-service:0.0.1
+    ports:
+      - "9090:9090"
+    depends_on:
+      - subscriptions
+  event:
+    container_name: event
+    build: .
+    image: newsletter/event-service:0.0.1
+    depends_on:
+      - email
       
