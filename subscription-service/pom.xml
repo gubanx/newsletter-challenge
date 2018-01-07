@@ -5,7 +5,7 @@
 
     <groupId>org.sample</groupId>
     <artifactId>subscription-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <packaging>jar</packaging>
 
     <name>subscription-service</name>
@@ -22,6 +22,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <docker.image.prefix>newsletter</docker.image.prefix>
+        <docker.image.name>subscription-service</docker.image.name>
     </properties>
 
     <dependencies>
@@ -138,6 +140,13 @@
                                             <tag>${project.version}</tag>
                                         </tags>
                                     </build>
+                                    <run>
+                                        <ports>
+                                            <port>8080:8080</port>
+                                            <port>8081:8081</port>
+                                            <port>8443:8443</port>
+                                        </ports>
+                                    </run>
                                 </image>
                             </images>
                         </configuration>

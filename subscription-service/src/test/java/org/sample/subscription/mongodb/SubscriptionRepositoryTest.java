@@ -57,26 +57,6 @@ public class SubscriptionRepositoryTest {
         assertThat(saved.getId()).isNotNull();
         assertThat(saved.getEmail()).isEqualTo("fabrejm@gmail.com");
         assertThat(saved.getFirstName()).isEqualTo("JM Fabre");
-        assertThat(saved.getConsent()).isTrue();
-    }
-
-    @Test
-    public void shouldFindASubscriptionWhithItsEmail() {
-
-        // Given
-        final Subscription subscription = new Subscription(
-                "fabrejm@gmail.com",
-                "JM Fabre",
-                Gender.MALE,
-                LocalDate.now(),
-                true
-        );
-
-        // When
-        final Subscription saved = repository.save(subscription).block();
-
-        // Then
-        assertThat(repository.existsByEmail("fabrejm@gmail.com").defaultIfEmpty(Boolean.FALSE).block()).isTrue();
     }
 
     @Test
