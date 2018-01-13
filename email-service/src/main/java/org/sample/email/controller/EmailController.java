@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.sample.email.domain.Subscription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,12 +26,16 @@ public class EmailController {
 
     private static final Logger log = LoggerFactory.getLogger(EmailController.class);
 
+    @Value("${subscriptions-service.url}")
+    private String subscriptionsUrl;
+
     // FIXME: this is a mock,
     @RequestMapping(method = GET)
     public ResponseEntity<String> sendEmail() {
+        log.info("subscriptionsUrl: " + subscriptionsUrl);
         try {
             RestTemplate restTemplate = new RestTemplate();
-            JsonNode subscriptions = restTemplate.getForObject("http://localhost:8080/subscriptions", JsonNode.class);
+            JsonNode subscriptions = restTemplate.getForObject(subscriptionsUrl, JsonNode.class);
             if (subscriptions != null && subscriptions.size() > 0) {
                 ObjectMapper mapper = new ObjectMapper();
                 List<Subscription> subscriptionList = null;

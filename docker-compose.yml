@@ -10,7 +10,6 @@ services:
       - MONGO_URL=mongodb://mongodb:27017/subscriptions-docker
   subscriptions:
     container_name: subscriptions
-    build: .
     image: newsletter/subscription-service:0.0.1
     ports:
       - "8080:8080"
@@ -25,16 +24,19 @@ services:
       retries: 3
   email:
     container_name: email
-    build: .
     image: newsletter/email-service:0.0.1
     ports:
       - "9090:9090"
     depends_on:
+      - subscriptions
+    links:
       - subscriptions
   event:
     container_name: event
     build: .
     image: newsletter/event-service:0.0.1
     depends_on:
+      - email
+    links:
       - email
       
