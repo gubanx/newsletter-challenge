@@ -56,6 +56,6 @@ You can start docker containers one-by-one with docker or with docker-compose. F
 - [ ] Use redis cache for reducing data base access.
 - [ ] Comunicate event with a queu (RabbitMQ).
 - [ ] More unit and integration tests.
-- [ ] CI/CD with travis.
+- [x] CI/CD with travis.
 - [ ] Docker containers orchestration with Kubernetes.
 
