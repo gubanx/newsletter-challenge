@@ -51,7 +51,7 @@ You can start docker containers one-by-one with docker or with docker-compose. F
 
 ## To-do list
 
-- [ ] Authenticate access to REST api with OAuth
+- [x] Authenticate access to REST api with OAuth
 - [ ] Use https
 - [ ] Use redis cache for reducing data base access.
 - [ ] Comunicate event with a queu (RabbitMQ).
