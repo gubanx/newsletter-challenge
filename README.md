@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/gubanx/newsletter-challenge.svg?branch=extra)](https://travis-ci.org/gubanx/newsletter-challenge)
+
 # Newsletter example with microservices
 
 This is a simple REST API application that manages user subscriptions to a
